@@ -1,217 +1,145 @@
-# Machine Learning Algorithms (Educational Implementations)
+# Machine Learning Algorithms
 
-This repository contains educational algorithm implementations made for learning and portfolio demonstration. Most models are implemented from scratch with NumPy, and some scripts include scikit-learn utilities for data splitting, preprocessing, or side-by-side comparison.
+Educational implementations of machine learning, reinforcement learning, and classical AI algorithms in Python. Most algorithms are implemented from scratch with NumPy, with selected comparisons and visualization using common scientific Python libraries.
 
 ## Table of Contents
-- [Project Purpose](#project-purpose)
+
+- [Project Overview](#project-overview)
 - [Repository Structure](#repository-structure)
 - [Algorithm Catalogue](#algorithm-catalogue)
-- [From-Scratch vs Library Usage](#from-scratch-vs-library-usage)
 - [Installation](#installation)
-- [How to Run Each Example](#how-to-run-each-example)
-- [Datasets and External Requirements](#datasets-and-external-requirements)
-- [Reproducibility Notes](#reproducibility-notes)
-- [Testing and Verification](#testing-and-verification)
-- [Limitations and Future Improvements](#limitations-and-future-improvements)
-- [Repository Metadata Recommendations](#repository-metadata-recommendations)
+- [Running the Examples](#running-the-examples)
+- [Data and Dependencies](#data-and-dependencies)
+- [Testing](#testing)
 
-## Project Purpose
-- Portfolio repository for machine learning / AI internship applications.
-- Focus: readable educational code, algorithm intuition, and practical experimentation.
-- Scope includes machine learning, reinforcement learning, and classical search/AI algorithms.
+## Project Overview
+
+This repository is designed for learning, experimentation, and portfolio demonstration. Each project focuses on making the underlying algorithm easy to explore through readable Python implementations and practical examples.
 
 ## Repository Structure
-- `constraint_satisfaction/`
-- `dbscan/`
-- `decision_tree/`
-- `deep_learning_mlp/`
-- `dijkstra_algorithm/`
-- `hill_climbing_hospital_configuration/`
-- `k_means/`
-- `k_nearest_neighbors/`
-- `linear_regression/`
-- `logistic_regression/`
-- `pca/`
-- `random_forest/`
-- `reinforcement_learning_Q_Sarsa/`
-- `support_vector_machine/`
-- `tic_tac_toe_minimax/`
-- `tests/` (lightweight deterministic checks)
+
+- `constraint_satisfaction/` — Constraint satisfaction with backtracking and heuristics
+- `dbscan/` — Density-based clustering
+- `decision_tree/` — Decision tree classification
+- `deep_learning_mlp/` — Multilayer perceptron digit classification
+- `dijkstra_algorithm/` — Shortest-path search
+- `hill_climbing_hospital_configuration/` — Hill-climbing optimization
+- `k_means/` — K-means clustering
+- `k_nearest_neighbors/` — K-nearest neighbors classification
+- `linear_regression/` — Linear regression
+- `logistic_regression/` — Logistic regression classification
+- `pca/` — Principal component analysis
+- `random_forest/` — Random forest regression
+- `reinforcement_learning_Q_Sarsa/` — Q-learning and SARSA
+- `support_vector_machine/` — Support vector machine-style classification
+- `tic_tac_toe_minimax/` — Minimax game-playing agent
+- `tests/` — Lightweight automated checks
 
 ## Algorithm Catalogue
 
 ### Supervised Learning
-- `linear_regression/`: linear regression via gradient descent.
-- `logistic_regression/`: logistic regression classifier (custom threshold currently `0.80`).
-- `k_nearest_neighbors/`: KNN classifier.
-- `decision_tree/`: classification tree (Gini-based splitting).
-- `random_forest/`: random forest regressor (bagged from-scratch trees).
-- `support_vector_machine/`: linear SVM-style classifier.
+
+- Linear regression
+- Logistic regression
+- K-nearest neighbors
+- Decision trees
+- Random forests
+- Support vector machines
 
 ### Unsupervised Learning
-- `k_means/`: K-means++-style centroid initialization and clustering.
-- `dbscan/`: density-based clustering with explicit epsilon neighborhood handling.
-- `pca/`: principal component analysis using covariance eigendecomposition.
+
+- K-means clustering
+- DBSCAN clustering
+- Principal component analysis
 
 ### Deep Learning
-- `deep_learning_mlp/`: MLP from scratch for digit classification.
+
+- Multilayer perceptron for digit classification
 
 ### Reinforcement Learning
-- `reinforcement_learning_Q_Sarsa/`: Q-learning and SARSA on racetrack-style environments.
 
-### Search / AI Algorithms
-- `constraint_satisfaction/`: backtracking + heuristics for CSP assignment.
-- `dijkstra_algorithm/`: shortest path with priority queue.
-- `hill_climbing_hospital_configuration/`: hill climbing + random restarts.
-- `tic_tac_toe_minimax/`: minimax-based Tic-Tac-Toe agent.
+- Q-learning
+- SARSA
 
-## From-Scratch vs Library Usage
-- **From-scratch core implementations**: decision tree, KNN, linear/logistic regression, K-means, DBSCAN, PCA, MLP, random forest, SVM, Q-learning/SARSA, CSP, Dijkstra, hill climbing, minimax.
-- **Library-assisted parts**: `train_test_split`, one-hot encoding, plotting, and occasional comparison with scikit-learn models (e.g., SVM / random forest / PCA visualization).
+### Search and AI
+
+- Constraint satisfaction
+- Dijkstra's algorithm
+- Hill climbing
+- Minimax
 
 ## Installation
-From repository root:
+
+From the repository root:
 
 ```bash
 python -m venv .venv
+
+# macOS/Linux
 source .venv/bin/activate
+
+# Windows PowerShell
+# .venv\Scripts\Activate.ps1
+
 pip install -r requirements.txt
 ```
 
-## How to Run Each Example
-Run from repository root unless noted.
+## Running the Examples
 
-### Supervised
-- Decision tree:
-  ```bash
-  python decision_tree/main.py
-  ```
-- KNN:
-  ```bash
-  python k_nearest_neighbors/main.py
-  ```
-- Linear regression:
-  ```bash
-  python linear_regression/main.py
-  ```
-- Logistic regression:
-  ```bash
-  python logistic_regression/main.py
-  ```
-- Random forest regression:
-  ```bash
-  python random_forest/main.py
-  ```
-- Linear SVM:
-  ```bash
-  python support_vector_machine/main.py
-  ```
+Run commands from the repository root.
 
-### Unsupervised
-- K-means:
-  ```bash
-  python k_means/main.py
-  ```
-- DBSCAN dataset generation (reproducible toy data, seed fixed in script):
-  ```bash
-  python dbscan/generate_dataset.py
-  ```
-- DBSCAN clustering and plots:
-  ```bash
-  python dbscan/main.py
-  ```
-- DBSCAN dataset visualization:
-  ```bash
-  python dbscan/visualize_dataset.py
-  ```
-- PCA:
-  ```bash
-  python pca/main.py
-  ```
+### Supervised Learning
+
+```bash
+python decision_tree/main.py
+python k_nearest_neighbors/main.py
+python linear_regression/main.py
+python logistic_regression/main.py
+python random_forest/main.py
+python support_vector_machine/main.py
+```
+
+### Unsupervised Learning
+
+```bash
+python k_means/main.py
+python dbscan/generate_dataset.py
+python dbscan/main.py
+python dbscan/visualize_dataset.py
+python pca/main.py
+```
 
 ### Deep Learning
-- MLP (MNIST-style Kaggle CSV expected):
-  ```bash
-  python deep_learning_mlp/main.py
-  ```
+
+```bash
+python deep_learning_mlp/main.py
+```
 
 ### Reinforcement Learning
-- Q-learning/SARSA race track simulation:
-  ```bash
-  python reinforcement_learning_Q_Sarsa/main.py
-  ```
 
-### Search / AI
-- Constraint satisfaction:
-  ```bash
-  python constraint_satisfaction/constraints.py
-  ```
-- Dijkstra:
-  ```bash
-  python dijkstra_algorithm/main.py
-  ```
-- Hill climbing hospital configuration:
-  ```bash
-  python hill_climbing_hospital_configuration/hospitals.py
-  ```
-- Tic-Tac-Toe minimax:
-  ```bash
-  python tic_tac_toe_minimax/main.py
-  ```
+```bash
+python reinforcement_learning_Q_Sarsa/main.py
+```
 
-## Datasets and External Requirements
-Already included in repository:
-- `decision_tree/dataset/Iris.csv`
-- `k_nearest_neighbors/dataset/Iris.csv`
-- `logistic_regression/dataset/credit_customers.csv`
-- `random_forest/dataset/Exam_Score_Prediction.csv`
-- `support_vector_machine/dataset/Exam_Score_Prediction.csv`
-- `linear_regression/student_performance_dataset.csv`
+### Search and AI
 
-Required but currently **not committed**:
-- `k_means/dataset/Country-data.csv`
-- `pca/dataset/Country-data.csv`
-- `deep_learning_mlp/digit-recognizer/train.csv` (Kaggle digit recognizer format)
+```bash
+python constraint_satisfaction/constraints.py
+python dijkstra_algorithm/main.py
+python hill_climbing_hospital_configuration/hospitals.py
+python tic_tac_toe_minimax/main.py
+```
 
-DBSCAN dataset:
-- Generated locally by `dbscan/generate_dataset.py` into `dbscan/dataset/dbscan_toy_3d.csv`.
+## Data and Dependencies
 
-## Reproducibility Notes
-- Some scripts use random initialization without setting seeds everywhere; results may vary run-to-run.
-- DBSCAN implementation currently excludes self from epsilon-neighbors and uses mixed `>= m` (seed) vs `> m` (expansion) checks; this convention is documented and preserved.
-- Several scripts use feature standardization by division with per-feature standard deviation; zero-variance features can cause divide-by-zero unless pre-cleaned.
+The examples use Python and widely adopted scientific computing tools, including NumPy, pandas, Matplotlib, and scikit-learn utilities where appropriate. Several projects include sample data or generate demonstration data as part of their workflow. Dataset-specific instructions are available in the README files within the corresponding project directories.
 
-## Testing and Verification
-Lightweight deterministic tests are in `tests/` and can be run with:
+## Testing
+
+Run the repository's automated checks with:
 
 ```bash
 pytest -q
 ```
 
-These tests intentionally avoid long training runs and unavailable external datasets.
-
-## Limitations and Future Improvements
-- Add standardized data-loading helpers shared across folders.
-- Add consistent input validation for all algorithms.
-- Add optional fast smoke scripts for every directory.
-- Add CI workflow for lint/test execution.
-- Review and potentially unify DBSCAN MinPts conventions.
-- Revisit reinforcement learning update schedule: `alpha` argument exists but update currently uses visit-count-based adaptive learning rate.
-
-## Repository Metadata Recommendations
-Suggested repository description:
-- `Educational machine learning and AI algorithms implemented from scratch in Python (with focused comparisons to scikit-learn).`
-
-Suggested GitHub topics:
-- `machine-learning`
-- `algorithms`
-- `python`
-- `from-scratch`
-- `deep-learning`
-- `reinforcement-learning`
-- `decision-tree`
-- `kmeans`
-- `dbscan`
-- `pca`
-- `svm`
-- `minimax`
+The tests provide quick verification of the core educational implementations without requiring lengthy model training.
