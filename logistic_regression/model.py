@@ -8,6 +8,7 @@ class Model:
         self.target = target
 
     def sigmoid(self,z):
+        z = np.clip(z, -500, 500)
         return 1/(1+np.exp(z*-1))
 
     # the acual formula is J = 1/m sum(1,m,yi*ln(p(xi)) + (1-yi)*ln(1-p(xi))) where p(xi) = y^i= 1/(1+e^-z), z = W * X ( weights vector times features vector ), however the formula can be changed with another formula that is more efficient to use ( numpy ) using linear algebra: J = (1/m)(Y_T * Z^) + mean(ln(1-Y^)) 

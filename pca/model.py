@@ -2,6 +2,10 @@ import numpy as np
 
 class Model:
     def __init__(self, k, dataset):
+        if k <= 0:
+            raise ValueError("k must be a positive integer.")
+        if k > dataset.shape[1]:
+            raise ValueError("k cannot be greater than the number of features.")
         self.k = k
         self.dataset = dataset
         self.W = None

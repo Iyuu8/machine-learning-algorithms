@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
 from model import Model
+from pathlib import Path
 
-df = pd.read_csv("student_performance_dataset.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "student_performance_dataset.csv")
 dfClean = df.dropna()
 
 dfClean["part_time_job"] = dfClean["part_time_job"].map({"Yes":1,"No":0})
@@ -44,7 +45,7 @@ featuresScaled = (features - np.mean(features, axis=0)) / np.std(features, axis=
 linearRegressionModel = Model(featuresScaled,target,0.1)
 baseCost = linearRegressionModel.cost()
 resultTraining = linearRegressionModel.train()
-print(f"accuracy: {(1-(resultTraining["cost"] / baseCost)) * 100:.2f}% | Weights: {linearRegressionModel.weights}")
+print(f"cost reduction: {(1-(resultTraining['cost'] / baseCost)) * 100:.2f}% | Weights: {linearRegressionModel.weights}")
 
 for i in range(10):
     print(resultTraining["estimates"][i],target[i])
@@ -56,7 +57,6 @@ testResult = linearRegressionModel.test(testFeaturesScaled,testTarget)
 print(testResult["meanAbsError"])
 for i in range(10):
     print(testResult["estimates"][i],testTarget[i])
-
 
 
 

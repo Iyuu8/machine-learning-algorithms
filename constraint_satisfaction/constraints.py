@@ -106,37 +106,40 @@ class ConstraintProblem:
 
 
 
-vars = set()
-for r in range(10):
-    for c in range(10):
-        vars.add(f"Cell_{r}_{c}")
+def main():
+    vars = set()
+    for r in range(10):
+        for c in range(10):
+            vars.add(f"Cell_{r}_{c}")
+
+    constraints = set()
+    for r1 in range(10):
+        for c1 in range(10):
+            for r2 in range(10):
+                for c2 in range(10):
+                    if (r1 == r2 or c1 == c2) and not (r1 == r2 and c1 == c2):
+                        constraints.add((f"Cell_{r1}_{c1}", f"Cell_{r2}_{c2}"))
+
+    # 7 Colors to choose from
+    domain = ["Red", "Green", "Blue", "Yellow", "Purple", "Orange", "Black","White","Grey","Cyan"]
+    problem = ConstraintProblem(vars, constraints, domain)
+
+    print("Starting search...")
+
+    # Start the timer
+    startTime = time.time()
+
+    # Run the algorithm
+    res = problem.backTrackSearch()
+
+    endTime = time.time()
+
+    print("Result:", res)
+    # Print the difference
+    print(f"Execution Time: {endTime - startTime} seconds")
 
 
-constraints = set()
-for r1 in range(10):
-    for c1 in range(10):
-        for r2 in range(10):
-            for c2 in range(10):
-                if (r1 == r2 or c1 == c2) and not (r1 == r2 and c1 == c2):
-                    constraints.add((f"Cell_{r1}_{c1}", f"Cell_{r2}_{c2}"))
-
-# 7 Colors to choose from
-domain = ["Red", "Green", "Blue", "Yellow", "Purple", "Orange", "Black","White","Grey","Cyan"]
-problem = ConstraintProblem(vars, constraints, domain)
-
-print("Starting search...")
-
-# Start the timer
-startTime = time.time()
-
-# Run the algorithm
-res = problem.backTrackSearch()
-
-endTime = time.time()
-
-print("Result:", res)
-# Print the difference
-print(f"Execution Time: {endTime - startTime} seconds")
+if __name__ == "__main__":
+    main()
             
-
 

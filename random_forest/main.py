@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from pathlib import Path
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
@@ -8,7 +9,7 @@ from sklearn.metrics import mean_absolute_error
 from model import DecisionTreeRegression
 from model import RandomForest
 
-df = pd.read_csv("./dataset/Exam_Score_Prediction.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "dataset" / "Exam_Score_Prediction.csv")
 dfClean = df.dropna()
 dfClean["internet_access"] = dfClean["internet_access"].map({"yes":1,"no":0})
 dfClean["sleep_quality"] = dfClean["sleep_quality"].map({"poor":0,"average":1,"good":2})
@@ -57,4 +58,3 @@ sklearn_preds = sklearn_model.predict(testFeatures)
 # Calculate MAE
 sklearn_mae = mean_absolute_error(testTarget, sklearn_preds)
 print(f"Scikit-Learn MAE: {sklearn_mae}")
-

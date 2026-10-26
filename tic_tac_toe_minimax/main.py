@@ -162,51 +162,54 @@ class TicTacToeAgent:
 
 
             
-agent = TicTacToeAgent()
+def main():
+    agent = TicTacToeAgent()
 
-board = [
-    [".", ".", "."],
-    [".", ".", "."],
-    [".", ".", "."]
-]
+    board = [
+        [".", ".", "."],
+        [".", ".", "."],
+        [".", ".", "."]
+    ]
 
-while not agent.terminal(board):
+    while not agent.terminal(board):
+        print()
+        for row in board:
+            print(" ".join(row))
+        print()
+        current = agent.player(board)
+        if current == "x":
+            print("Your turn (X)")
+            row = int(input("Row (0-2): "))
+            col = int(input("Col (0-2): "))
+
+            if row < 0 or row > 2 or col < 0 or col > 2:
+                print("Invalid position.")
+                continue
+
+            if board[row][col] != ".":
+                print("Cell already occupied.")
+                continue
+
+            board[row][col] = "x"
+
+        else:
+            print("AI is thinking...")
+            agent.setNextMove(board, "o")
+
     print()
     for row in board:
         print(" ".join(row))
-    print()
-    current = agent.player(board)
-    if current == "x":
-        print("Your turn (X)")
-        row = int(input("Row (0-2): "))
-        col = int(input("Col (0-2): "))
 
-        if row < 0 or row > 2 or col < 0 or col > 2:
-            print("Invalid position.")
-            continue
+    winner = agent.winner(board)
 
-        if board[row][col] != ".":
-            print("Cell already occupied.")
-            continue
-
-        board[row][col] = "x"
-
+    if winner == "x":
+        print("You win!")
+    elif winner == "o":
+        print("AI wins!")
     else:
-        print("AI is thinking...")
-        agent.setNextMove(board, "o")
+        print("Draw!")
 
 
-print()
-for row in board:
-    print(" ".join(row))
-
-winner = agent.winner(board)
-
-if winner == "x":
-    print("You win!")
-elif winner == "o":
-    print("AI wins!")
-else:
-    print("Draw!")
+if __name__ == "__main__":
+    main()
     
-

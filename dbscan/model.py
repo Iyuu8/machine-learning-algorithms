@@ -44,6 +44,9 @@ class Model:
                         self.clusters[neighborInd] = clustersCount
                         Nepsilon, count = self.computeNepsilon(neighborInd)
 
+                        # TODO: Review strict `count > self.m` expansion condition.
+                        # Seed expansion uses `count >= self.m`, so this strict check
+                        # keeps the current convention for backward compatibility.
                         if count > self.m: queue.extend(Nepsilon)
 
                 # end of maximal set of density connected points ( cluster )
@@ -66,6 +69,5 @@ class Model:
         
 
         
-
 
 

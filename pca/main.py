@@ -3,8 +3,9 @@ import pandas as pd
 from model import Model
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+from pathlib import Path
 
-df = pd.read_csv("./dataset/Country-data.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "dataset" / "Country-data.csv")
 dfClean = df.dropna()
 
 features = [ "child_mort", "exports", "health", "imports", "income", "inflation", "life_expec", "total_fer", "gdpp"]
