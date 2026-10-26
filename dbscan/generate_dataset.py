@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
 np.random.seed(42)
 
@@ -25,5 +26,8 @@ all_points = np.vstack(points)
 
 # Create a DataFrame and save as CSV
 df = pd.DataFrame(all_points, columns=['x', 'y', 'z'])
-df.to_csv('dataset/dbscan_toy_3d.csv', index=False)
-print("Dataset generated successfully at dataset/dbscan_toy_3d.csv")
+dataset_dir = Path(__file__).resolve().parent / "dataset"
+dataset_dir.mkdir(parents=True, exist_ok=True)
+dataset_path = dataset_dir / "dbscan_toy_3d.csv"
+df.to_csv(dataset_path, index=False)
+print(f"Dataset generated successfully at {dataset_path}")

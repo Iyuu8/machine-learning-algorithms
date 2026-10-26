@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from pathlib import Path
 
 from model import DecisionTreeClassifier
 
-df = pd.read_csv("./dataset/Iris.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "dataset" / "Iris.csv")
 dfClean = df.dropna()
 
 dfTrain, dfTest = train_test_split(dfClean, test_size=0.2, random_state=42)
@@ -20,4 +21,3 @@ testTarget = dfTest[["Species"]].to_numpy().ravel()
 model = DecisionTreeClassifier()
 model.buildTree(trainFeaturesScaled, np.asarray(trainTarget).ravel())
 print((model.predict(testFeaturesScaled) == np.asarray(testTarget).ravel()).sum() / testTarget.shape[0])
-

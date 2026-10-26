@@ -2,9 +2,10 @@ import pandas as pd
 import numpy as np
 from model import NeuralNet
 from sklearn.model_selection import train_test_split
+from pathlib import Path
 
 
-df = pd.read_csv("./digit-recognizer/train.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "digit-recognizer" / "train.csv")
 dfClean = df.dropna()
 dfTrain , dfTest = train_test_split(dfClean,test_size=0.1,random_state=42)
 

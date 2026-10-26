@@ -3,11 +3,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from model import Model
+from pathlib import Path
 
 
 from sklearn.svm import SVC # to bench mark against actual library, by claude
 
-df = pd.read_csv("./dataset/Exam_Score_Prediction.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "dataset" / "Exam_Score_Prediction.csv")
 cleanDf = df.dropna()
 cleanDf["internet_access"] = cleanDf["internet_access"].map({"yes":1,"no":0})
 cleanDf = pd.get_dummies(cleanDf,columns=["course","sleep_quality","study_method","exam_difficulty"],drop_first=True,dtype=int)

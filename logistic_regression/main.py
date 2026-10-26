@@ -3,8 +3,10 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from model import Model
+from pathlib import Path
 
-df = pd.read_csv("./dataset/credit_customers.csv")
+script_dir = Path(__file__).resolve().parent
+df = pd.read_csv(script_dir / "dataset" / "credit_customers.csv")
 
 dfClean = df.dropna()
 dfClean["class"] = dfClean["class"].map({"good":1,"bad":0})
@@ -66,5 +68,5 @@ plt.barh(names, vals, color=colors)
 plt.xlabel('Weight (standardized)')
 plt.title('Feature weights — green pushes toward "good", red toward "bad"')
 plt.tight_layout()
-plt.savefig('feature_importance.png', dpi=150)
+plt.savefig(script_dir / 'feature_importance.png', dpi=150)
 plt.show()

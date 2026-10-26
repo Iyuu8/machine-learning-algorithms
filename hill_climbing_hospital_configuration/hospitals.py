@@ -1,5 +1,6 @@
 import random
 import json
+from pathlib import Path
 
 class HospitalsMap:
     def __init__(self,nbRows,nbCols,nbHouses):
@@ -206,15 +207,23 @@ class HospitalsMap:
 
             
         
-grid = HospitalsMap(100,150,10)
-grid.generateRandomHospitals(5)
-# grid.saveGridToImage("before.png")
-grid.exportState("before")
-print(grid.calcCurrCost())
+def main():
+    script_dir = Path(__file__).resolve().parent
+    before_prefix = script_dir / "before"
+    after_prefix = script_dir / "after"
 
-# grid.hillClimb()
-grid.randomRestartHillClimb(1000)
-print(grid.calcCurrCost())
-# grid.saveGridToImage("after.png")
-grid.exportState("after")
+    grid = HospitalsMap(100,150,10)
+    grid.generateRandomHospitals(5)
+    # grid.saveGridToImage("before.png")
+    grid.exportState(str(before_prefix))
+    print(grid.calcCurrCost())
 
+    # grid.hillClimb()
+    grid.randomRestartHillClimb(1000)
+    print(grid.calcCurrCost())
+    # grid.saveGridToImage("after.png")
+    grid.exportState(str(after_prefix))
+
+
+if __name__ == "__main__":
+    main()

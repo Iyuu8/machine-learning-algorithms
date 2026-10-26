@@ -3,8 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 from model import Model
+from pathlib import Path
 
-df = pd.read_csv('./dataset/Country-data.csv')
+df = pd.read_csv(Path(__file__).resolve().parent / "dataset" / "Country-data.csv")
 dfClean = df.dropna()
 features = [ "child_mort", "exports", "health", "imports", "income", "inflation", "life_expec", "total_fer", "gdpp"]
 
@@ -40,6 +41,5 @@ ax[1].grid(True)
 
 plt.tight_layout()
 plt.show()
-
 
 

@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from model import Model
+from pathlib import Path
 
-df = pd.read_csv("./dataset/Iris.csv")
+df = pd.read_csv(Path(__file__).resolve().parent / "dataset" / "Iris.csv")
 dfClean = df.dropna()
 
 
@@ -24,7 +25,6 @@ testTarget = dfTest["Species"].map(encodeClass).to_numpy() # necessary to be a s
 
 knnModel = Model(3,trainFeaturesScaled,trainTarget)
 print(knnModel.accuracy(testFeaturesScaled,testTarget))
-
 
 
 

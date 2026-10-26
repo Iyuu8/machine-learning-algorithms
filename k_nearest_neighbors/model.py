@@ -1,6 +1,10 @@
 import numpy as np
 class Model:
     def __init__(self, k, features, target):
+        if k <= 0:
+            raise ValueError("k must be a positive integer.")
+        if k > features.shape[0]:
+            raise ValueError("k cannot be greater than the number of training samples.")
         self.k = k
         self.features = features
         self.target = target
